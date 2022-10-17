@@ -15,7 +15,7 @@ const { NotImplementedError } = require("../extensions/index.js");
  */
 
 const createDreamTeam = (members) => {
-  if (!Array.isArray(members)) return;
+  if (!Array.isArray(members)) return false;
 
   const stringNamedMembers = members.filter(
     (member) => typeof member === "string"
