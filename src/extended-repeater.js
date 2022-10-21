@@ -26,28 +26,18 @@ const repeater = (
     additionSeparator = "|",
   }
 ) => {
-  const repeaterText = ({ text, separator, time }) => {
-    let textValue = String(text);
+  let text = String(str);
+  if (String(addition)) {
+    text =
+      text +
+      repeater(addition, {
+        repeatTimes: additionRepeatTimes,
+        separator: additionSeparator,
+      });
+  }
+  text = new Array(repeatTimes).fill(text).join(separator);
 
-    for (let i = 0; i < time - 1; i++) {
-      textValue = textValue + separator + text;
-    }
-    return textValue;
-  };
-
-  const finalTextToRepeat =
-    str +
-    repeaterText({
-      text: addition,
-      separator: additionSeparator,
-      time: additionRepeatTimes,
-    });
-
-  return repeaterText({
-    text: finalTextToRepeat,
-    separator,
-    time: repeatTimes,
-  });
+  return text;
 };
 
 module.exports = {
